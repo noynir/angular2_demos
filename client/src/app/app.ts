@@ -1,8 +1,50 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import Movie from './common/models/movie.model';
 
 @Component({
   selector   : 'app',
-  templateUrl: './app.html',
+  styles:[`
+    h1 {
+     color:blue; 
+    }
+    section{
+      padding:10px;
+    }
+  `],
+  template: `
+    <h1>Movie Catalog</h1>
+    <section>
+      <div class='details'>
+          <h3>{{movie.title}} Details</h3>
+          <div>
+            Id: {{movie.id}}
+          </div>
+          <div>
+            <label >
+              Title: <input type='text' [value]="movie.title" 
+                        (keyup.enter)="movie.title=titleInput.value" #titleInput />
+            </label>
+          </div>
+          <button (click)="onSaveMovie(titleInput.value)" >Save</button>          
+      </div>
+    </section>
+  `,
 })
-export class AppComponent {
+export class AppComponent implements OnInit  {
+  
+  private movie:Movie;
+
+  constructor(){
+    
+  }
+
+  ngOnInit(){
+    this.movie = new Movie(3,'Toy Story');
+    console.log('app init');
+  }
+
+  onSaveMovie(value){
+    this.movie.title=value;
+  }
+
 }
