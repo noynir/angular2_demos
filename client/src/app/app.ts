@@ -21,11 +21,9 @@ import Movie from './common/models/movie.model';
           </div>
           <div>
             <label >
-              Title: <input type='text' [value]="movie.title" 
-                        (keyup.enter)="movie.title=titleInput.value" #titleInput />
+              Title: <input type='text' [(ngModel)]="movie.title" />
             </label>
-          </div>
-          <button (click)="onSaveMovie(titleInput.value)" >Save</button>          
+          </div>          
       </div>
     </section>
   `,
