@@ -20,7 +20,8 @@ module.exports.getMovies=function(limit,page){
   var l = limit || 5;
   var p = page ? (page>0 ? (page-1)*l : 0) : 0;
   return Movie.find()
-          .sort({'id':1})
+          .sort({'year':-1})
           .limit(l)
-          .skip(p);
+          .skip(p)
+          .select("id title imdbPictureURL year Genres");
 };

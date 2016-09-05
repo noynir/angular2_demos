@@ -1,14 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import Movie from './common/models/movie.model';
-
-const MOVIES = 
 [
   {
-    id: 1,
-    title: "Toy story",
-    poster:"http://ia.media-imdb.com/images/M/MV5BMTMwNDU0NTY2Nl5BMl5BanBnXkFtZTcwOTUxOTM5Mw@@._V1._SX214_CR0,0,214,314_.jpg",
-    year: 1995,
-    genres: [
+    "id": 1,
+    "title": "Toy story",
+    "poster":"http://ia.media-imdb.com/images/M/MV5BMTMwNDU0NTY2Nl5BMl5BanBnXkFtZTcwOTUxOTM5Mw@@._V1._SX214_CR0,0,214,314_.jpg",
+    "year": 1995,
+    "genres": [
       "Adventure",
       "Animation",
       "Children",
@@ -122,93 +118,3 @@ const MOVIES =
     "genres": []
   }
 ];
-
-@Component({
-  selector   : 'app',
-  styles:[`
-    h1 {
-     color:blue; 
-    }
-    section{
-      padding:10px;
-    }
-    ul{
-      list-style:none;
-    }
-    .list li img{
-      width:80px;
-      height:114px;
-    }
-    .movieItem{
-        margin-bottom:10px;
-        border:solid 1px black;
-        height: 114px;
-
-    }
-    .movieItem .imgContainer{
-      margin-right:10px;
-      border-right:solid 1px black;
-      padding:0;
-      height:100%
-    }
-    .movieItem .info b{
-      padding-bottom:20px;
-    }
-    .movieItem.selected{
-      background-color:#FFFADD;
-    }
-  `],
-  template: `
-    <h1>Movie Catalog</h1>
-    <section>
-      <div class="list">
-        <ul>
-          <li class="movieItem group" [ngClass]="{selected:selectedMovie===movie}" *ngFor="let movie of movies" (click)="onMovieSelected(movie)">
-            <div>
-              <div class="imgContainer pull-left">
-                  <img [src]="movie.poster" />
-              </div>
-              <div class="info pull-left">
-                  <b>{{movie.title}}</b><br />
-                  Released  {{movie.year}}
-              </div>
-            </div>
-          </li>
-        </ul>
-
-      </div>
-      <div class='details' *ngIf="selectedMovie" >
-          <h3>{{selectedMovie.title}} Details</h3>
-          <div>
-            Id: {{selectedMovie.id}}
-          </div>
-          <div>
-            <label >
-              Title: <input type='text' [(ngModel)]="selectedMovie.title" />
-            </label>
-          </div>          
-      </div>
-    </section>
-  `,
-})
-export class AppComponent implements OnInit  {
-  
-  private movies:any;
-  private selectedMovie:Movie;
-
-  constructor(){
-    this.movies=MOVIES;
-  }
-
-  ngOnInit(){
-    console.log('app init');
-  }
-
-  onSaveMovie(value){
-    this.selectedMovie.title=value;
-  }
-  onMovieSelected(_movie:Movie){
-    this.selectedMovie=_movie;
-  }
-
-}
