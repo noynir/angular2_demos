@@ -132,72 +132,22 @@ const MOVIES =
     section{
       padding:10px;
     }
-    ul{
-      list-style:none;
-    }
-    .list li img{
-      width:80px;
-      height:114px;
-    }
-    .movieItem{
-        margin-bottom:10px;
-        border:solid 1px black;
-        height: 114px;
-
-    }
-    .movieItem .imgContainer{
-      margin-right:10px;
-      border-right:solid 1px black;
-      padding:0;
-      height:100%
-    }
-    .movieItem .info b{
-      padding-bottom:20px;
-    }
-    .movieItem.selected{
-      background-color:#FFFADD;
-    }
   `],
-  template: `
+  template:`
     <h1>Movie Catalog</h1>
     <section>
-      <div class="list">
-        <ul>
-          <li class="movieItem group" [ngClass]="{selected:selectedMovie===movie}" *ngFor="let movie of movies" (click)="onMovieSelected(movie)">
-            <div>
-              <div class="imgContainer pull-left">
-                  <img [src]="movie.poster" />
-              </div>
-              <div class="info pull-left">
-                  <b>{{movie.title}}</b><br />
-                  Released  {{movie.year}}
-              </div>
-            </div>
-          </li>
-        </ul>
-
-      </div>
-      <div class='details' *ngIf="selectedMovie" >
-          <h3>{{selectedMovie.title}} Details</h3>
-          <div>
-            Id: {{selectedMovie.id}}
-          </div>
-          <div>
-            <label >
-              Title: <input type='text' [(ngModel)]="selectedMovie.title" />
-            </label>
-          </div>          
-      </div>
+      <moviesList (onMovieSelected)="onMovieSelected($event)" [movies]="moviesList" ></moviesList>
+      <movieDetails [selectedMovie]="selectedMovie" ></movieDetails>
     </section>
-  `,
+  `
 })
 export class AppComponent implements OnInit  {
   
-  private movies:any;
+  private moviesList:any;
   private selectedMovie:Movie;
 
   constructor(){
-    this.movies=MOVIES;
+    this.moviesList=MOVIES;
   }
 
   ngOnInit(){
