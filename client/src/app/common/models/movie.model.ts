@@ -3,5 +3,5 @@ export default class Movie{
                 public title='',
                 public poster='',
                 public year=0,
-                public generes:any=[]){}
+                public genres:String[]){}
 }
