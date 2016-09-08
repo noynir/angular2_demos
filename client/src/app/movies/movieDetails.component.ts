@@ -12,6 +12,11 @@ import { Component, OnInit, Input } from '@angular/core';
             <label >
               Title: <input type='text' [(ngModel)]="selectedMovie.title" />
             </label>
+          </div>   
+           <div>
+            <label >
+              Year: <input type='text' [(ngModel)]="selectedMovie.year" />
+            </label>
           </div>          
       </div>
     `
