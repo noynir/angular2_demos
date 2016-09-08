@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MoviesService  } from '../common/services/movies.service.ts';
+import Movie from '../common/models/movie.model';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
     selector: 'movieDetails',
@@ -17,16 +20,39 @@ import { Component, OnInit, Input } from '@angular/core';
             <label >
               Year: <input type='text' [(ngModel)]="selectedMovie.year" />
             </label>
-          </div>          
-      </div>
+          </div>
+          <button (click)="saveMovie()" >Save</button>          
+      </div>  
     `
 })
 export class MovieDetailsComponent implements OnInit {
     
-    @Input()
-    private selectedMovie;
+    private selectedMovie:Movie;
 
-    constructor() { }
+    private errorMessage:string;
 
-    ngOnInit() { }
+    constructor(private movieService: MoviesService,
+                private route: ActivatedRoute,
+                private router:Router) {
+
+    }
+
+    ngOnInit() { 
+      this.route.params.forEach( (params:Params) => {
+          let id = params['id'];
+          this.movieService.getMovie(id)
+            .subscribe(
+                movie => this.selectedMovie = movie,
+                error => this.errorMessage = error);
+      });
+    }
+
+    saveMovie(){
+      this.movieService.saveMovie(this.selectedMovie)
+          .subscribe(() => this.goToList())
+    }
+
+    goToList(){
+      this.router.navigate(['/movies']);
+    }
 }

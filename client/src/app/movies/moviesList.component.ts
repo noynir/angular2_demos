@@ -52,7 +52,7 @@ import Movie from '../common/models/movie.model';
 export class MoviesListComponent implements OnInit {
     
     @Input()
-    private movies:any[];
+    movies:any[];
     
     private selectedMovie:Movie;
 
