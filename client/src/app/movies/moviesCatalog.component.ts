@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
     template: `
         <h1>Movie Catalog</h1>
         <section>
-        <a routerLink="/movies/1" >Toy Story</a>
           <div>
               <movieNew (onMovieAdded)="onNewMovie($event)" ></movieNew>
           </div>

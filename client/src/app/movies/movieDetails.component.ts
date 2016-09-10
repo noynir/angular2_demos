@@ -6,7 +6,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
     selector: 'movieDetails',
     template:`
-       <div class='details' *ngIf="selectedMovie" >
+       <div class='details pull-left' *ngIf="selectedMovie" >
           <h3>{{selectedMovie.title}} Details</h3>
           <div>
             Id: {{selectedMovie.id}}
