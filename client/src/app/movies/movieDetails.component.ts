@@ -42,6 +42,11 @@ export class MovieDetailsComponent implements OnInit {
     }
 
     ngOnInit() { 
+      // this.route.data.forEach( (data:{currentMovie:Movie}) => {
+      //      this.selectedMovie=data.currentMovie;
+      //      this.editTitle=data.currentMovie.title;
+      //      this.editYear=data.currentMovie.year;
+      // });
       this.route.data.forEach( (data:{currentMovie:Movie}) => {
            this.selectedMovie=data.currentMovie;
            this.editTitle=data.currentMovie.title;

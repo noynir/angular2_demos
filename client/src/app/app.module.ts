@@ -5,6 +5,7 @@ import {ConfirmService } from './common/services/confirm.service';
 import { MoviesRoutingModule, MOVIES_ROUTING_PROVIDERS } from './movies/movies.routing';
 import { MovieDetailsResolve } from './common/services/movieDetails-Resolve.service';
 import { MoviesListComponent } from './movies/moviesList.component';
+import { MovieEditDetailsComponent } from './movies/movieEditDetails.component';
 import {MovieDetailsComponent} from './movies/movieDetails.component';
 import {MovieNewComponent} from './movies/movieNew.component';
 import {MovieData} from './common/data/movies.data';
@@ -14,10 +15,12 @@ import {FormsModule} from "@angular/forms";
 import { InMemoryWebApiModule  } from 'angular2-in-memory-web-api';
 import {HttpModule} from '@angular/http';
 import { MoviesCatalogComponent } from './movies/moviesCatalog.component';
+import { MovieImageComponent } from './movies/movieImage.component';
 
 
 @NgModule({
-  declarations: [AppComponent,MoviesListComponent,MovieDetailsComponent,MovieNewComponent,MoviesCatalogComponent],
+  declarations: [AppComponent,MoviesListComponent,MovieDetailsComponent,MovieNewComponent,
+                MoviesCatalogComponent,MovieImageComponent,MovieEditDetailsComponent],
   imports     : [BrowserModule,
                   FormsModule,InMemoryWebApiModule.forRoot(MovieData), HttpModule, AppRoutingModule,MoviesRoutingModule],
   providers   : [MoviesService,MovieDetailsResolve,MOVIES_ROUTING_PROVIDERS,ConfirmService  ],

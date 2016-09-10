@@ -11,7 +11,7 @@ export class MovieDetailsResolve implements Resolve<Movie> {
     constructor(private movieService: MoviesService) { }
 
     resolve(route: ActivatedRouteSnapshot): Observable<Movie> | Promise<Movie>{
-         let id= +route.params['id'];  
+         let id= +route.parent.params['id'];  
          return this.movieService.getMovie(id);
     }
 

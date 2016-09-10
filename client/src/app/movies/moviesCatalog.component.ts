@@ -37,7 +37,7 @@ export class MoviesCatalogComponent implements OnInit  {
   }
 
   onMovieSelected(_movie:Movie){
-    this.router.navigate(['/movies',_movie.id]);
+    this.router.navigate(['/movies',_movie.id,'edit']);
   }
 
   onNewMovie(_movie:Movie){
