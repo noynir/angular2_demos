@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
     selector: 'movieDetails',
     template:`
-       <div class='details' *ngIf="selectedMovie" >
+       <div class='details pull-left' *ngIf="selectedMovie" >
           <h3>{{selectedMovie.title}} Details</h3>
           <div>
             Id: {{selectedMovie.id}}
