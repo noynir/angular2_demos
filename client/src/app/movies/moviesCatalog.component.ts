@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'moviesCatalog',
     template: `
-        <h1>Movie Catalog</h1>
         <section>
         <a routerLink="/movies/1" >Toy Story</a>
           <div>

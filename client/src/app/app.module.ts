@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core'
 import {AppComponent} from "./app";
 import { AppRoutingModule } from './app.routing';
+import { MoviesRoutingModule } from './movies/movies.routing';
+import { MovieDetailsResolve } from './common/services/movieDetails-Resolve.service';
 import { MoviesListComponent } from './movies/moviesList.component';
 import {MovieDetailsComponent} from './movies/movieDetails.component';
 import {MovieNewComponent} from './movies/movieNew.component';
@@ -15,8 +17,9 @@ import { MoviesCatalogComponent } from './movies/moviesCatalog.component';
 
 @NgModule({
   declarations: [AppComponent,MoviesListComponent,MovieDetailsComponent,MovieNewComponent,MoviesCatalogComponent],
-  imports     : [BrowserModule,FormsModule,InMemoryWebApiModule.forRoot(MovieData), HttpModule, AppRoutingModule],
-  providers   : [MoviesService],
+  imports     : [BrowserModule,
+                  FormsModule,InMemoryWebApiModule.forRoot(MovieData), HttpModule, AppRoutingModule,MoviesRoutingModule],
+  providers   : [MoviesService,MovieDetailsResolve],
   bootstrap   : [AppComponent]
 })
 export class AppModule {

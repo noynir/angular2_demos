@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MoviesService  } from '../common/services/movies.service.ts';
 import Movie from '../common/models/movie.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'movieDetails',
@@ -28,22 +29,17 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class MovieDetailsComponent implements OnInit {
     
     private selectedMovie:Movie;
-
     private errorMessage:string;
 
-    constructor(private movieService: MoviesService,
+    constructor(private movieService:MoviesService,
                 private route: ActivatedRoute,
                 private router:Router) {
 
     }
 
     ngOnInit() { 
-      this.route.params.forEach( (params:Params) => {
-          let id = params['id'];
-          this.movieService.getMovie(id)
-            .subscribe(
-                movie => this.selectedMovie = movie,
-                error => this.errorMessage = error);
+      this.route.data.forEach( (data:{currentMovie:Movie}) => {
+           this.selectedMovie=data.currentMovie;
       });
     }
 
