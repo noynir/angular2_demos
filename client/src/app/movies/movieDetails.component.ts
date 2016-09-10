@@ -14,22 +14,26 @@ import { Observable } from 'rxjs/Observable';
           </div>
           <div>
             <label >
-              Title: <input type='text' [(ngModel)]="selectedMovie.title" />
+              Title: <input type='text' [(ngModel)]="editTitle" />
             </label>
           </div>   
            <div>
             <label >
-              Year: <input type='text' [(ngModel)]="selectedMovie.year" />
+              Year: <input type='text' [(ngModel)]="editYear" />
             </label>
           </div>
-          <button (click)="saveMovie()" >Save</button>          
+          <button (click)="saveMovie()" >Save</button>
+          <button (click)="goToList()" >Back</button>          
       </div>  
     `
 })
 export class MovieDetailsComponent implements OnInit {
     
-    private selectedMovie:Movie;
+    selectedMovie:Movie;
     private errorMessage:string;
+
+    editTitle:string;
+    editYear:number; 
 
     constructor(private movieService:MoviesService,
                 private route: ActivatedRoute,
@@ -40,10 +44,14 @@ export class MovieDetailsComponent implements OnInit {
     ngOnInit() { 
       this.route.data.forEach( (data:{currentMovie:Movie}) => {
            this.selectedMovie=data.currentMovie;
+           this.editTitle=data.currentMovie.title;
+           this.editYear=data.currentMovie.year;
       });
     }
 
     saveMovie(){
+      this.selectedMovie.title=this.editTitle;
+      this.selectedMovie.year= this.editYear;
       this.movieService.saveMovie(this.selectedMovie)
           .subscribe(() => this.goToList())
     }

@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core'
 import {AppComponent} from "./app";
 import { AppRoutingModule } from './app.routing';
-import { MoviesRoutingModule } from './movies/movies.routing';
+import {ConfirmService } from './common/services/confirm.service';
+import { MoviesRoutingModule, MOVIES_ROUTING_PROVIDERS } from './movies/movies.routing';
 import { MovieDetailsResolve } from './common/services/movieDetails-Resolve.service';
 import { MoviesListComponent } from './movies/moviesList.component';
 import {MovieDetailsComponent} from './movies/movieDetails.component';
@@ -19,7 +20,7 @@ import { MoviesCatalogComponent } from './movies/moviesCatalog.component';
   declarations: [AppComponent,MoviesListComponent,MovieDetailsComponent,MovieNewComponent,MoviesCatalogComponent],
   imports     : [BrowserModule,
                   FormsModule,InMemoryWebApiModule.forRoot(MovieData), HttpModule, AppRoutingModule,MoviesRoutingModule],
-  providers   : [MoviesService,MovieDetailsResolve],
+  providers   : [MoviesService,MovieDetailsResolve,MOVIES_ROUTING_PROVIDERS,ConfirmService  ],
   bootstrap   : [AppComponent]
 })
 export class AppModule {
