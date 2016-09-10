@@ -4,32 +4,46 @@ import Movie from '../common/models/movie.model';
 @Component({
     selector: 'moviesList',
     styles:[`
-    ul{
+  ul{
       list-style:none;
+    }
+    .list{
+      margin:10px;
     }
     .list li img{
       width:80px;
-      height:114px;
+      height:118px;
     }
     .movieItem{
         margin-bottom:10px;
-        border:solid 1px black;
-        height: 114px;
-        cursor: pointer; 
+        height: 118px;
+        width:512px;
+        background-color:#ffffff;
+        border:solid 1px #e3e3e3;
+        box-shadow:0 2px 5px rgba(0,0,0,0.4)
+
+    }
+    .movieItem .info{
+       padding: 5px;
+
     }
     .movieItem .imgContainer{
       margin-right:10px;
       border-right:solid 1px black;
       padding:0;
-      height:100%
+      height:118px;  
     }
     .movieItem .info b{
-      padding-bottom:20px;
+      line-height:36px;
+      font-size:24px;
+    }
+    .movieItem .info span{
+      color:#b8b8b8;
+      font-size:18px;
     }
     .movieItem.selected{
       background-color:#FFFADD;
     }
-    
     `],
     template: `
     <div class="list">
