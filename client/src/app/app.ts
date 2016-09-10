@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import Movie from './common/models/movie.model';
 
+
 const MOVIES = 
 [
   {
@@ -189,7 +190,7 @@ const MOVIES =
               </div>
             </div>
           </li>
-        </ul>
+        </ul>  
 
       </div>
       <div class="details pull-left" *ngIf="selectedMovie" >
@@ -203,6 +204,7 @@ const MOVIES =
             </label>
           </div>          
       </div>
+      
     </section>
   `,
 })
