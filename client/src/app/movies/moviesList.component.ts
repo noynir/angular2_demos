@@ -44,7 +44,6 @@ import Movie from '../common/models/movie.model';
     .movieItem.selected{
       background-color:#FFFADD;
     }
-    
     `],
     template: `
     <div class="list pull-left">
