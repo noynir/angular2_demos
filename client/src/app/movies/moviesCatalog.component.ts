@@ -14,6 +14,9 @@ import { Router } from '@angular/router';
           </div>
           <moviesList (onMovieSelected)="onMovieSelected($event)" [movies]="moviesList" ></moviesList>
         </section>
+        <section>
+          <movieSearch></movieSearch>
+        </section>
     `
 })
 export class MoviesCatalogComponent implements OnInit  {
