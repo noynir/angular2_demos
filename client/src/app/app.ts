@@ -22,6 +22,9 @@ import { MoviesService } from './common/services/movies.service';
       <moviesList (onMovieSelected)="onMovieSelected($event)" [movies]="moviesList" ></moviesList>
       <movieDetails [selectedMovie]="selectedMovie" ></movieDetails>
     </section>
+    <section>
+        <movieSearch></movieSearch>
+    </section>
   `
 })
 export class AppComponent implements OnInit  {

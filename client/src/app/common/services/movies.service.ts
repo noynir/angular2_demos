@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import Movie from '../models/movie.model';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 
@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 export class MoviesService {
     
     private  moviesAPIUrl='app/movies';
+    private headers = new Headers({'Content-Type': 'application/json'})
     
     constructor(private http:Http) { 
 
@@ -24,7 +25,21 @@ export class MoviesService {
                     .map(this.extractData)
                     .catch(this.handleError);     
     }
-
+    
+    saveMovie(movie): Observable<Movie>{
+        let url = `this.moviesAPIUrl/movie.id`;
+        return this.http.put(url, JSON.stringify(movie), {headers: this.headers})
+                  .map(response => {return movie})
+                  .catch(this.handleError);
+    }
+    
+    search(term: string):Observable<Movie[]>{
+            console.log(term);
+            let url = `${this.moviesAPIUrl}/?title=${term}`;
+            return this.http.get(url)
+                .map(this.extractData)
+                .catch(this.handleError);
+    }
     private extractData(response: Response) : any{
         let res = response.json(); 
         return res.data || [];

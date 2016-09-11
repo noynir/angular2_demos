@@ -9,10 +9,12 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import { InMemoryWebApiModule  } from 'angular2-in-memory-web-api';
 import {HttpModule} from '@angular/http';
+import { MovieSearchComponent } from './movies/movie.search.component';
 
 
 @NgModule({
-  declarations: [AppComponent,MoviesListComponent,MovieDetailsComponent,MovieNewComponent],
+  declarations: [AppComponent,MoviesListComponent,MovieDetailsComponent,MovieNewComponent,
+                MovieSearchComponent],
   imports     : [BrowserModule,FormsModule,InMemoryWebApiModule.forRoot(MovieData), HttpModule],
   providers   : [MoviesService],
   bootstrap   : [AppComponent]
