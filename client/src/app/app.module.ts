@@ -18,7 +18,8 @@ import { MovieSearchComponent } from './movies/movie.search.component';
 
 
 @NgModule({
-  declarations: [AppComponent,MoviesListComponent,MovieDetailsComponent,MovieNewComponent,MoviesCatalogComponent],
+  declarations: [AppComponent,MoviesListComponent,
+                  MovieDetailsComponent,MovieNewComponent,MoviesCatalogComponent,MovieSearchComponent],
   imports     : [BrowserModule,
                   FormsModule,InMemoryWebApiModule.forRoot(MovieData), HttpModule, AppRoutingModule,MoviesRoutingModule],
   providers   : [MoviesService,MovieDetailsResolve,MOVIES_ROUTING_PROVIDERS,ConfirmService  ],
