@@ -39,7 +39,13 @@ export class MoviesService {
                     .map(this.extractData)
                     .catch(this.handleError);     
     }
-
+    search(term: string):Observable<Movie[]>{
+            console.log(term);
+            let url = `${this.moviesAPIUrl}/?title=${term}`;
+            return this.http.get(url)
+                .map(this.extractData)
+                .catch(this.handleError);
+    }
     private extractData(response: Response) : any{
         let res = response.json(); 
         return res.data || [];

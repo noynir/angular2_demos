@@ -14,6 +14,7 @@ import {FormsModule} from "@angular/forms";
 import { InMemoryWebApiModule  } from 'angular2-in-memory-web-api';
 import {HttpModule} from '@angular/http';
 import { MoviesCatalogComponent } from './movies/moviesCatalog.component';
+import { MovieSearchComponent } from './movies/movie.search.component';
 
 
 @NgModule({

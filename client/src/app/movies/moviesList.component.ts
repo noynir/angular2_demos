@@ -46,7 +46,7 @@ import Movie from '../common/models/movie.model';
     }
     `],
     template: `
-    <div class="list">
+    <div class="list pull-left">
         <ul>
             <li class="movieItem group" [ngClass]="{selected:selectedMovie===movie}" *ngFor="let movie of movies" (click)="onMovieClicked(movie)">
             <div>
