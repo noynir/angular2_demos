@@ -9,4 +9,11 @@ router.get('/',function(req,res){
   })
 })
 
+router.post('/',function(req,res){
+  console.log(req.body);
+  dataService.createMovie(req.body).then(function(doc){
+    return res.send(doc);
+  })
+})
+
 module.exports=router;

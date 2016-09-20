@@ -20,7 +20,21 @@ module.exports.getMovies=function(limit,page){
   var l = limit || 5;
   var p = page ? (page>0 ? (page-1)*l : 0) : 0;
   return Movie.find()
-          .sort({'id':1})
+          .sort({'year':-1})
           .limit(l)
           .skip(p);
 };
+
+module.exports.createMovie = function(movie){
+  console.log(movie);
+  var movieModel =new Movie({
+    title:movie.title,
+    imdbPictureURL:movie.imdbPictureURL,
+    year:movie.year
+  });
+
+  return movieModel.save();
+
+}
+
+
